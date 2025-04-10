@@ -1,8 +1,10 @@
 Todo List Application
-Description
+
+Description:
 This is a basic Todo List application built with HTML, CSS, and JavaScript. It allows users to add, edit, and delete tasks from a todo list. The application interacts with a mock API to manage tasks, allowing users to dynamically modify their task list.
 
-Features
+Features:
+
 Add Task: Allows users to enter a task and add it to the list.
 
 Edit Task: Users can edit the text of an existing task by clicking the "EDIT" button.
@@ -11,7 +13,8 @@ Delete Task: Users can remove a task by clicking the "DELETE" button.
 
 Tasks are stored and retrieved from a mock API for persistence.
 
-Technologies Used
+Technologies Used:
+
 HTML: For the structure of the app.
 
 CSS: For styling the todo list interface.
