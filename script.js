@@ -1,4 +1,4 @@
-let arr = []
+// let arr = []
 const baseURL = 'https://67f804312466325443eb919f.mockapi.io/todo' 
 
 // function getList() {
@@ -18,6 +18,7 @@ async function getList() {
     const response = await fetch(baseURL)
     const data = await response.json()
     showList(data)
+    
 }
 getList()
 
@@ -70,43 +71,38 @@ function addTask(){
 }
 
 function removeTask(id) {
-    removeBtn.closest('li').remove()
+    fetch(`${baseURL}/${id}`,{
+        method:'DELETE',
+        headers:{
+            'content-type': 'application/json'
+        }
+    })
+    .then(res => {
+        res.json()
+        if (res.ok) {
+            getList()
+        }
+    })
 }
 function editTask(id, text) {
-   let editItem = editBtn.closest('li')
-   let previousText = editItem.querySelector("span").textContent
-   
-   editItem.innerHTML = 
-    `<li>
-        <div class="mx-auto border-b border-gray-300 p-3 flex justify-between">
-           <input class="p-2 border rounded" type="text" name="" id="" value="${previousText}">
-            <div>
-                <button onclick =saveTask(this)  type="submit" class="text-white bg-green-600 font-medium rounded-lg text-sm px-4 py-2 ">SAVE</button>
-                <button onclick = cancelText(this) type="submit" class="text-white bg-gray-400 font-medium rounded-lg text-sm px-4 py-2 ">CANCEL</button>
-            </div>
-        </div>
-    </li>`
+    let pr = prompt('Please, add value to Update!', text)
+    if (pr != '' && pr != null) {
+        fetch(`${baseURL}/${id}`,{
+         method: 'PUT',
+         headers: {
+             'content-type': 'application/json'
+         },
+         body: JSON.stringify({text: pr})
+         
+        })
+        .then(res =>{res.json()
+            if (res.ok) {
+                getList()
+            } 
+        } )
+        
+        
+    }
 }
-
-// function cancelText(cancelBtn) {
-//     // 
-// }
-// cancel duzelt
-// function saveTask(saveBtn) {
-//     let saveItem = saveBtn.closest('li')
-//     let saveChanges = saveItem.querySelector('input').value
-//     saveItem.innerHTML=
-//     `<li>
-//         <div class="mx-auto border-b border-gray-300 p-3 flex justify-between">
-//             <span>${saveChanges}</span>
-//             <div>
-//                 <button onclick =editTask(this)  type="submit" class="text-white bg-blue-600 font-medium rounded-lg text-sm px-4 py-2 ">EDIT</button>
-//                 <button onclick = removeTask(this) type="submit" class="text-white bg-gray-400 font-medium rounded-lg text-sm px-4 py-2 ">DELETE</button>
-//             </div>
-//         </div>
-//     </li>`
-// }
-
-
 
         // VALIDASIYA
