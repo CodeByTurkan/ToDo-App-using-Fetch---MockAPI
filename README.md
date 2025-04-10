@@ -17,7 +17,7 @@ Technologies Used:
 
 HTML: For the structure of the app.
 
-CSS: For styling the todo list interface.
+Tailwind CSS: For styling the todo list interface.
 
 JavaScript: For implementing the logic and interacting with the API.
 
